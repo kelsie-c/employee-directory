@@ -1,12 +1,15 @@
+import Header from "./components/Header";
+import SearchForm from "./components/SearchForm";
+import SearchResultContainer from "./components/SearchResultContainer";
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        
-      </header>
-    </div>
+    <>
+      <Header />
+      <SearchForm />
+      <SearchResultContainer />
+    </>
   );
 }
 
