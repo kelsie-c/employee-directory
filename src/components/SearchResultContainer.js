@@ -40,7 +40,7 @@ class SearchResultContainer extends Component {
         return (
             <>
                 <SearchForm name="search" sort={this.sort} label="Search" />
-                <table>
+                <table className="table table-light table-striped table-hover table-bordered table-condensed">
                     <thead>
                         <tr>
                             <th>Image</th>
