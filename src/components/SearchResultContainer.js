@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Employees from "./Employees";
+import SearchForm from "./SearchForm";
 
 class SearchResultContainer extends Component {
     state = {
@@ -25,6 +26,7 @@ class SearchResultContainer extends Component {
                 sorted.email.toLowerCase().includes(search.toLowerCase())
             );
         });
+        this.setState({ employeesSorted });
     };
 
     sort = (e) => {
@@ -37,6 +39,7 @@ class SearchResultContainer extends Component {
     render = () => {
         return (
             <>
+                <SearchForm name="search" sort={this.sort} label="Search" />
                 <table>
                     <thead>
                         <tr>
@@ -44,8 +47,8 @@ class SearchResultContainer extends Component {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone #</th>
-                            <th>Address</th>
                             <th>Date of Birth</th>
+                            <th>Address</th>                            
                         </tr>
                     </thead>
                     <tbody>
@@ -62,7 +65,7 @@ class SearchResultContainer extends Component {
                                     address={employee.location.street.number + " " + employee.location.street.name + ", " + employee.location.city + ", " + employee.location.state + " " + employee.location.postcode}
                                 />
                             ))
-                            : this.state.employeesSorted.map((employee) => {
+                            : this.state.employeesSorted.map((employee) => (
                                 <Employees
                                     key={employee.id.value}
                                     icon={employee.picture.thumbnail}
@@ -73,7 +76,7 @@ class SearchResultContainer extends Component {
                                     dob={employee.dob.date}
                                     address={employee.location.street.number + " " + employee.location.street.name + ", " + employee.location.city + ", " + employee.location.state + " " + employee.location.postcode}
                                 />
-                            })
+                            ))
                         }
                     </tbody>
                 </table>
